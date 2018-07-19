@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google" content="notranslate" />
+  <title>CSS Paint API</title>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .billion {
+      width: 600px;
+      height: 600px;
+
+      background-image: -moz-element(#mycanvas);
+      background-image: -webkit-canvas(mycanvas);
+    }
+  </style>
+
+</head>
+<body>
+<div class="billion"></div>
+
+
+<script type="module">
+
+  import {DotPainter} from "./dot_webkitcanvas.js";
+
+  function getBgCanvas(id, width, height) {
+    let ctx = null;
+    if (document.getCSSCanvasContext) { // webkit用の指定
+      ctx = document.getCSSCanvasContext("2d", id, width, height);
+    }
+
+
+    else if (document.mozSetImageElement) { // Firefox用の指定
+      var canvas = document.createElement("canvas");
+      canvas.setAttribute("width", width);
+      canvas.setAttribute("height", height);
+      ctx = canvas.getContext("2d");
+      document.mozSetImageElement(id, canvas);
+    }
+    return ctx;
+  }
+
+  const ctx = getBgCanvas("mycanvas", 600, 600);
+
+  const d = new DotPainter();
+  console.log(d);
+  d.setParam(ctx,
+    /* 変数を定義 */
+    "hsl(60, 100%, 50%)",
+    "hsl(180, 100%, 50%)",
+    "hsl(0, 0%, 100%)",
+    "hsl(296, 100%, 50%)",
+    10,
+    1,
+    {width: 600, height: 600}
+  );
+</script>
+</body>
+</html>

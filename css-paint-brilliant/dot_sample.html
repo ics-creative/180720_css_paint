@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="google" content="notranslate"/>
+  <title>CSS Paint API</title>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .billion {
+      width: 100%;
+      height: 100%;
+
+      /* 変数を定義 */
+      --color-tl: hsl(60, 100%, 50%);
+      --color-tr: hsl(180, 100%, 50%);
+      --color-bl: hsl(0, 0%, 100%);
+      --color-br: hsl(296, 100%, 50%);
+      --grid-span: 1;
+      --grid-size: 30;
+
+      /* paintでワークレットを呼び出せる */
+      background-image: paint(dot);
+    }
+  </style>
+  <script>
+    // workletを登録する
+    CSS.paintWorklet.addModule('dot_worklet.js');
+  </script>
+</head>
+<body>
+  <div class="billion"></div>
+</body>
+</html>
