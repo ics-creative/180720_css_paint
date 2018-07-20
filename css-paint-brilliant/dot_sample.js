@@ -9,7 +9,7 @@ class DotPainter {
 
   /**
    * 入力してのプロパティーを定義します。
-   * 配列として返したプロパティが取得できます。
+   * 配列として返したプロパティーが取得できます。
    * @returns {string[]}
    */
   static get inputProperties() {
@@ -27,7 +27,7 @@ class DotPainter {
    * 描画時に呼び出される関数です。
    * @param context {CanvasRenderingContext2D} コンテキストです。
    * @param geometry {{width:number, height:number}} 描画領域の情報(width, heightsのみ)です。
-   * @param properties {Object} CSSプロパティです。
+   * @param properties {Object} CSS変数です。
    */
   paint(context, geometry, properties) {
 

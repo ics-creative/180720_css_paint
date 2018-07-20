@@ -128,10 +128,3 @@ export class DotPainter {
       - (r1 - r3) * b + r1);
   }
 }
-
-try {
-  // ペイントを登録します
-  registerPaint("dot", DotPainter);
-} catch (error) {
-
-}

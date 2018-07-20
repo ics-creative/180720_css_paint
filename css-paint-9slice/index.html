@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Paint API - ICS MEDIA</title>
+  <script>
+    // workletを登録する
+    CSS.paintWorklet.addModule('worklet.js');
+  </script>
+  <style>
+    .graphics {
+      width: 100%;
+      height: 400px;
+
+      --rect-round: 40;
+      --rect-color: #FFCA28;
+
+      /* paint(登録した名前)で画像として利用可能 */
+      background-image: paint(rect);
+    }
+  </style>
+</head>
+<body>
+  <div class="graphics"></div>
+</body>
+</html>

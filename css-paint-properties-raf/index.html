@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Paint API - ICS MEDIA</title>
+  <script>
+    // workletを登録する
+    CSS.paintWorklet.addModule('worklet.js');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('.graphics');
+      tick();
+
+      // アニメーションを開始
+      function tick() {
+        // 色相を計算（経過時間から算出 0〜360の値を取り得る）
+        const hue = Math.round((Date.now() / 10) % 360);
+        // CSS変数を更新
+        el.style.setProperty('--fill-color', `hsl(${hue}, 100%, 50%)`);
+
+        requestAnimationFrame(tick);
+      }
+    });
+
+
+  </script>
+  <style>
+    body {
+      /* 中央寄せ */
+      display: flex;
+      justify-content: center;
+    }
+
+    .graphics {
+      /* 任意のサイズを指定する */
+      width: 80vw;
+      height: 80vh;
+
+      /* paint(登録した命令)で背景画像として利用可能 */
+      background-image: paint(triangle);
+    }
+  </style>
+</head>
+<body>
+  <div class="graphics"></div>
+</body>
+</html>
