@@ -15,7 +15,7 @@ class TrianglePainter {
   /**
    * 描画時に呼び出される関数です。
    * @param context {CanvasRenderingContext2D} コンテキストです。
-   * @param geometry {{width:number, height:number}} 描画領域の情報(width, heightsのみ)です。
+   * @param geometry {{width:number, height:number}} 描画領域の情報(width, heightのみ)です。
    * @param properties {Object} CSS変数です。
    */
   paint(context, geometry, properties) {
