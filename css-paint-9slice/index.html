@@ -11,17 +11,29 @@
   <style>
     .graphics {
       width: 100%;
-      height: 400px;
+      height: 75vh;
 
       --rect-round: 40;
-      --rect-color: #FFCA28;
-
-      /* paint(登録した名前)で画像として利用可能 */
+      --rect-color: #1976D2;
       background-image: paint(rect);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .info {
+      text-align: center;
+      color: white;
+      font-family: sans-serif;
     }
   </style>
 </head>
 <body>
-  <div class="graphics"></div>
+  <div class="graphics">
+    <div class="info">
+      <h1>CSS Paint API</h1>
+      <p>このような角を持った矩形を描けるのが面白い</p>
+    </div>
+  </div>
 </body>
 </html>
