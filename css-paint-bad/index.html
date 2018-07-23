@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="google" content="notranslate" />
+  <title>CSS Paint API</title>
+  <script>
+    // workletを登録する
+    CSS.paintWorklet.addModule('worklet.js');
+  </script>
+  <style>
+    .target {
+      width: 100%;
+      height: 400px;
+
+      /* 変数を定義する */
+      --time: 200;
+
+      /* paint(登録した名前)で画像として使える */
+      background-image: paint(circle);
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="target"></div>
+
+  <script>
+    // アニメーションさせる。
+    // CSS Transition/CSS Animationは
+    // CSS Variablesには対応してないので手動で動かす。
+    const target = document.querySelector('.target');
+
+    let count = 0;
+
+    // アニメーションループ用の関数
+    function loop(timestamp) {
+      target.style.setProperty('--time', count++);
+
+      // 次のフレームを要求する
+      requestAnimationFrame(loop);
+    }
+
+    // アニメーション開始
+    loop();
+  </script>
+</body>
+</html>
